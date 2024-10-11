@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MLFlexer&#39;s blog</title>
+    <link>https://mlflexer.github.io/</link>
+    <description>Recent content on MLFlexer&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 11 Oct 2024 11:56:18 +0200</lastBuildDate><atom:link href="https://mlflexer.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test_post</title>
+      <link>https://mlflexer.github.io/posts/test_post/</link>
+      <pubDate>Fri, 11 Oct 2024 11:56:18 +0200</pubDate>
+      
+      <guid>https://mlflexer.github.io/posts/test_post/</guid>
+      
+      <description>&lt;h1 id=&#34;this-is-a-header&#34;&gt;This is a header&lt;/h1&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-lua&#34; data-lang=&#34;lua&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
