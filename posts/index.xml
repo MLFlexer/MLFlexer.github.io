@@ -6,7 +6,26 @@
     <description>Recent content in Posts on MLFlexer&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Oct 2024 11:56:18 +0200</lastBuildDate><atom:link href="https://mlflexer.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Oct 2024 14:18:01 +0200</lastBuildDate><atom:link href="https://mlflexer.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I Quit Tmux</title>
+      <link>https://mlflexer.github.io/posts/wezterm_replacing_tmux/</link>
+      <pubDate>Fri, 11 Oct 2024 14:18:01 +0200</pubDate>
+      
+      <guid>https://mlflexer.github.io/posts/wezterm_replacing_tmux/</guid>
+      
+      <description>&lt;p&gt;&lt;img src=&#34;https://mlflexer.github.io/wezterm_replacing_tmux/meme.jpg&#34; alt=&#34;I don&amp;rsquo;t want to play without you anymore meme&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In June 2023 I installed Wezterm and a month later I quit Tmux.&lt;br&gt;
+It&amp;rsquo;s been more than a year since I quit, and I can confidently say that I won&amp;rsquo;t go back.&lt;br&gt;
+In this blog post I will go through why I replaced my workflow in Tmux with Wezterm, and the pros and cons of doing so.&lt;/p&gt;
+&lt;h2 id=&#34;how-did-i-use-tmux&#34;&gt;How did I use Tmux?&lt;/h2&gt;
+&lt;h4 id=&#34;panes--windows&#34;&gt;Panes &amp;amp; Windows&lt;/h4&gt;
+&lt;p&gt;The main usecase I had from Tmux was to write my code in Neovim, and then run the code in a split pane.&lt;br&gt;
+In doing so I would usually have my Neovim instance running in a zoomed pane, and then unzoom to compile or whatever I would need a terminal for.&lt;br&gt;
+If I were to use something like &lt;a href=&#34;https://github.com/jesseduffield/lazygit&#34;&gt;Lazygit&lt;/a&gt; or quickly edit a file in another directory, then I would use either a floating pane or a new Tmux window (tab for regular folks) as to not interrupt/pollute my neovim, split layout.&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>Test_post</title>
       <link>https://mlflexer.github.io/posts/test_post/</link>
