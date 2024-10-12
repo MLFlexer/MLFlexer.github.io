@@ -48,7 +48,7 @@
         },
         "datePublished": "2024-10-11",
         "description": "",
-        "wordCount":  1732 ,
+        "wordCount":  1913 ,
         "mainEntityOfPage": "True",
         "dateModified": "2024-10-11",
         "image": {
@@ -72,10 +72,8 @@
   <meta property="og:description" content="
 In June 2023 I installed Wezterm and a month later I quit Tmux.
 It’s been more than a year since I quit, and I can confidently say that I won’t go back.
-In this blog post I will go through why I replaced my workflow in Tmux with Wezterm, and the pros and cons of doing so.
-How did I use Tmux? Panes &amp; Windows The main usecase I had from Tmux was to write my code in Neovim, and then run the code in a split pane.
-In doing so I would usually have my Neovim instance running in a zoomed pane, and then unzoom to compile or whatever I would need a terminal for.
-If I were to use something like Lazygit or quickly edit a file in another directory, then I would use either a floating pane or a new Tmux window (tab for regular folks) as to not interrupt/pollute my neovim, split layout.">
+In this blog post I will go through why I replaced my workflow in Tmux with Wezterms multiplexing capabilities, and the pros and cons of doing so.
+How did I use Tmux? Panes &amp; Windows The main use case I had from Tmux was to write my code in Neovim, and then run the code in a split pane. In doing so I would usually have my Neovim instance running in a zoomed pane, and then unzoom to compile or whatever I would need a terminal for. If I were to use something like Lazygit or quickly edit a file in another directory, then I would use either a floating pane or a new Tmux window (tab for regular folks) as to not interrupt/pollute my Neovim, split layout.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -90,10 +88,8 @@ If I were to use something like Lazygit or quickly edit a file in another direct
   <meta name="twitter:description" content="
 In June 2023 I installed Wezterm and a month later I quit Tmux.
 It’s been more than a year since I quit, and I can confidently say that I won’t go back.
-In this blog post I will go through why I replaced my workflow in Tmux with Wezterm, and the pros and cons of doing so.
-How did I use Tmux? Panes &amp; Windows The main usecase I had from Tmux was to write my code in Neovim, and then run the code in a split pane.
-In doing so I would usually have my Neovim instance running in a zoomed pane, and then unzoom to compile or whatever I would need a terminal for.
-If I were to use something like Lazygit or quickly edit a file in another directory, then I would use either a floating pane or a new Tmux window (tab for regular folks) as to not interrupt/pollute my neovim, split layout.">
+In this blog post I will go through why I replaced my workflow in Tmux with Wezterms multiplexing capabilities, and the pros and cons of doing so.
+How did I use Tmux? Panes &amp; Windows The main use case I had from Tmux was to write my code in Neovim, and then run the code in a split pane. In doing so I would usually have my Neovim instance running in a zoomed pane, and then unzoom to compile or whatever I would need a terminal for. If I were to use something like Lazygit or quickly edit a file in another directory, then I would use either a floating pane or a new Tmux window (tab for regular folks) as to not interrupt/pollute my Neovim, split layout.">
 
 
     
@@ -197,28 +193,36 @@ stroke-linejoin="round" class="feather feather-home">
                 <p><img src="/wezterm_replacing_tmux/meme.jpg" alt="I don&rsquo;t want to play without you anymore meme"></p>
 <p>In June 2023 I installed Wezterm and a month later I quit Tmux.<br>
 It&rsquo;s been more than a year since I quit, and I can confidently say that I won&rsquo;t go back.<br>
-In this blog post I will go through why I replaced my workflow in Tmux with Wezterm, and the pros and cons of doing so.</p>
+In this blog post I will go through why I replaced my workflow in Tmux with Wezterms multiplexing capabilities, and the pros and cons of doing so.</p>
 <h2 id="how-did-i-use-tmux">How did I use Tmux?</h2>
-<h4 id="panes--windows">Panes &amp; Windows</h4>
-<p>The main usecase I had from Tmux was to write my code in Neovim, and then run the code in a split pane.<br>
-In doing so I would usually have my Neovim instance running in a zoomed pane, and then unzoom to compile or whatever I would need a terminal for.<br>
-If I were to use something like <a href="https://github.com/jesseduffield/lazygit">Lazygit</a> or quickly edit a file in another directory, then I would use either a floating pane or a new Tmux window (tab for regular folks) as to not interrupt/pollute my neovim, split layout.</p>
-<h4 id="sessions">Sessions</h4>
+<h5 id="panes--windows">Panes &amp; Windows</h5>
+<p>The main use case I had from Tmux was to write my code in Neovim, and then run the code in a split pane.
+In doing so I would usually have my Neovim instance running in a zoomed pane, and then unzoom to compile or whatever I would need a terminal for.
+If I were to use something like <a href="https://github.com/jesseduffield/lazygit">Lazygit</a> or quickly edit a file in another directory, then I would use either a floating pane or a new Tmux window (tab for regular folks) as to not interrupt/pollute my Neovim, split layout.</p>
+<h5 id="sessions">Sessions</h5>
 <p>As a CS student I would also frequently switch context throughout the day/week, as I would be writing a compiler in one course and a matrix multiplication algorithm in another.
 As such I would switch git repositories frequently. For doing this I used my favorite Tmux plugin <a href="https://github.com/joshmedeski/t-smart-tmux-session-manager">t</a>, a predecessor of <a href="https://github.com/joshmedeski/sesh">sesh</a>. This plugin would use <a href="https://github.com/junegunn/fzf">fzf</a> and <a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> to quickly create/connect to Tmux sessions with the session name and cwd set to a chosen directory. This made it super quick to switch context, and changed the way I work in the terminal.</p>
 <h2 id="why-did-i-switch">Why did I switch?</h2>
 <p>But why switch from Tmux? I though Tmux is what all the cool h4ck3rs are using?<br>
 Tmux is amazing, and I don&rsquo;t have many reasons for making the switch, but here are some:</p>
-<h4 id="not-having-to-startattach-to-tmux">Not having to start/attach to Tmux</h4>
-<p>One issue I was having when I used Tmux was the problem of opening my terminal, navigating to my repository, starting Neovim, getting in the zone, quickly splitting my pane to compi&hellip; Oh, wait&hellip; I forgot to attach to Tmux, meaning I now have to open everything again inside a Tmux session, pulling me out of the zone&hellip;<br>
-To fix this issue, one can simply make starting and attaching to a Tmux session a part of spawning a shell. Sure, it works, but is a tiny bit slower whenever you open a shell and I wasn&rsquo;t a big fan of this.</p>
-<p>Wezterm however does not suffer from this problem. In Wezterm you can simply split panes, spawn tabs ect. as it is attached to a default Session (Workspace) whenever you start the terminal. This seems like a minor inconvinience, but was actually the main reason that I made the switch to Wezterm.</p>
-<h4 id="tmux-configuration-sucks">Tmux configuration sucks</h4>
-<p>As a programmer I find the Tmux configuration experience a lot worse than Wezterm. Wezterm is configured in Lua which is a very simple, but powerful language and perfect for configurations in my opinion.
-At least it is easier for me to read and write an actual programming language, than the DSL that is the Tmux configuration + shell scripts.</p>
+<h5 id="not-having-to-startattach-to-tmux">Not having to start/attach to Tmux</h5>
+<p>One issue I was having when I used Tmux was this: I’d open my terminal, navigate to a repository, and start Neovim to begin programming.
+Code is flowing from my brain, through my fingers, to the screen! I am truly in the zone now, feeling like Vim Diesel! Quickly splitting the pane to compi&hellip;<br>
+Oh, wait&hellip; I forgot to attach to Tmux. Now I have to stop and open everything again inside a Tmux session to split the pane. Slowing me down and making me lose focus&hellip;<br>
+To fix this issue, one can simply make starting and attaching to a Tmux session a part of spawning a shell.
+Sure, it works, but is a tiny bit slower whenever you open a shell and I wasn&rsquo;t a big fan of this.</p>
+<p>Wezterm, a terminal emulator with builtin multiplexing, does not suffer from this problem.
+In Wezterm you can simply split panes, spawn tabs etc. as it is attached to a default Session (Workspace) whenever you start the terminal.
+This might seem like a minor inconvenience, but was actually the main reason that I made the switch to Wezterm.</p>
+<h5 id="tmux-configuration-sucks">Tmux configuration sucks</h5>
+<p>As a programmer I find the Tmux configuration experience a lot worse than Wezterm. Wezterm is configured in Lua which is a very simple, but powerful language, and in my opinion, perfect for configurations.
+At least for me Lua offers better readability and maintainability than the Tmux config.
+It is also easier to extend core functionality, as you don&rsquo;t need to rely on shell scripts to add logic to your configuration.</p>
 <p>Below is an example of a Tmux and Wezterm keybind to split the current pane vertically and spawn top in the left pane.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>bind-key -n C-t run-shell <span style="color:#e6db74">&#34;tmux split-window -h -p 50 &#39;top&#39; &amp;&amp; tmux swap-pane -D&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>config.keys <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># Tmux</span>
+</span></span><span style="display:flex;"><span>bind-key -n C-t run-shell <span style="color:#e6db74">&#34;tmux split-window -h -p 50 &#39;top&#39; &amp;&amp; tmux swap-pane -D&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#75715e">-- Wezterm</span>
+</span></span><span style="display:flex;"><span>config.keys <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  {
 </span></span><span style="display:flex;"><span>    key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;t&#39;</span>,
 </span></span><span style="display:flex;"><span>    mods <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CTRL&#39;</span>,
@@ -230,15 +234,15 @@ At least it is easier for me to read and write an actual programming language, t
 </span></span><span style="display:flex;"><span>  },
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>I personally find it very hard to understand the Tmux keybind, but that might just be a skill issue&hellip;<br>
-Furthermore, if you are using Tmux, then you are most likely also using a terminal emulator with a configuration.
-Combining the multiplexer and terminal configuration into one also improves the simplicity of my dotfiles.</p>
-<h4 id="trying-new-software-is-fun">Trying new software is fun</h4>
+Furthermore, if you are using Tmux, then you are most likely also using a terminal emulator with another configuration.
+Combining the multiplexer and terminal configuration into one also improves the simplicity and maintainability of my dotfiles.</p>
+<h5 id="trying-new-software-is-fun">Trying new software is fun</h5>
 <p>The number one reason that I switched might just be because I was looking into terminal emulators and in my search of finding the best, I found Wezterm. Reading the <a href="https://wezfurlong.org/wezterm/multiplexing.html">multiplexing</a> and the <a href="https://wezfurlong.org/wezterm/recipes/workspaces.html">Workspaces/Sessions sections</a> of the docs, I figured I could replace my Tmux setup with the features built into Wezterm.
 So over the summer break I replicated most of the features from Tmux in my Wezterm config, and it was very enjoyable to configure it to my liking.</p>
 <h2 id="what-are-the-pros">What are the pros?</h2>
 <p>Wezterm has a lot of features which I wasn&rsquo;t aware of before I switched which I only discovered after switching.</p>
-<h4 id="the-killer-feature-of-wezterms-domains">The killer feature of Wezterms domains</h4>
-<p>Wezterm has the concept of domains. Domains are the &ldquo;context&rdquo; for which a pane exists.
+<h5 id="the-killer-feature-of-wezterms-domains">The killer feature of Wezterms domains</h5>
+<p>Wezterm has the concept of domains. Domains are like the &ldquo;context&rdquo; for which a pane exists.
 By default you use &ldquo;local&rdquo; domains, which are just regular shell sessions.
 However in Wezterm you can also spawn panes in other domains, like a ssh domain, which will make a pane with an active ssh connection.
 This pane can then be split, opened in a new tab, ect. Just like a regular &ldquo;local&rdquo; pane, but without you having to manually ssh into the server every time.
@@ -248,47 +252,59 @@ This also works for other domains, like <a href="https://wezfurlong.org/wezterm/
 With some nice keybindings, like <a href="https://github.com/DavidRR-F/quick_domains.wezterm">quick_domains</a> then it is amazing to work with, especially when you don&rsquo;t have access to Tmux on a server.</p>
 <p>Below is gif of me spawning a pane in a domain which automatically creates a ssh connection to a Raspberry Pi. I am able to freely split panes like I would with regular (&ldquo;local&rdquo;) panes and splitting a pane, will spawn a split pane within that specific domain. This is why the left panes both are on my laptop, while the right panes are on the Raspberry Pi.
 <img src="/wezterm_replacing_tmux/domain_gif.gif" alt="Domain demo gif"></p>
-<h4 id="great-documentation-and-apis">Great documentation and APIs</h4>
-<p>I have spent many hours reading through the documentation of Wezterm and all the features are really well documented and most have easy to follow examples. Through reading the docs I have discovered many interesting ways to use features I would otherwise ignore to improve my workflow, like <a href="https://wezfurlong.org/wezterm/config/lua/keyassignment/PromptInputLine.html#example-of-interactively-picking-a-name-and-creating-a-new-workspace">this example</a> or the <a href="https://wezfurlong.org/wezterm/config/lua/ExecDomain.html#example-docker-domains">docker domain</a> from before.</p>
-<h4 id="the-best-maintainer-and-community-in-open-source">The best maintainer and community in Open Source</h4>
+<h5 id="great-documentation-and-apis">Great documentation and APIs</h5>
+<p>I have spent many hours reading through the documentation of Wezterm and all the features are really well documented and most have easy to follow examples. Through reading the docs I have discovered many interesting ways to use features I would otherwise ignore to improve my workflow, like <a href="https://wezfurlong.org/wezterm/config/lua/keyassignment/PromptInputLine.html#example-of-interactively-picking-a-name-and-creating-a-new-workspace">this example</a> of interactivly creating and naming workspaces, or the <a href="https://wezfurlong.org/wezterm/config/lua/ExecDomain.html#example-docker-domains">docker domain</a> from before.</p>
+<h5 id="the-best-maintainer-and-community-in-open-source">The best maintainer and community in Open Source</h5>
 <p>Sure, that is a bit of a bold statement, but Wez is a really great maintainer. Not only for his work on Wezterm, but for the way he approaches contributers. He is always very friendly, appreciative and gives detailed feedback on PRs. I aspire to be like him whenever I&rsquo;m giving feedback.<br>
-The community is also really supportive and helpful, whether it is people on <a href="https://www.reddit.com/r/wezterm/">Reddit</a>, <a href="https://app.element.io/#/room/#wezterm:matrix.org">Matrix</a> or <a href="https://github.com/wez/wezterm/discussions">github</a>. I have never seen any communication that left a bad taste in my mouth.</p>
+The community is also really supportive and helpful, whether it is people on <a href="https://www.reddit.com/r/wezterm/">Reddit</a>, <a href="https://app.element.io/#/room/#wezterm:matrix.org">Matrix</a> or <a href="https://github.com/wez/wezterm/discussions">Github</a>. I have never seen any communication that left a bad taste in my mouth.</p>
 <h2 id="what-are-the-cons">What are the cons?</h2>
-<h4 id="not-as-popular">Not as popular</h4>
-<p>Wezterm is a newer terminal with a smaller group of users. As such there is less information about Wezterm compared to Tmux.<br>
-This also means that some of the plugins from Tmux, like <a href="https://github.com/tmux-plugins/tmux-resurrect">tmux-resurrect</a> or the <a href="https://github.com/joshmedeski/t-smart-tmux-session-manager">t plugin</a> I mentioned above, was not available when I switched.
+<p>After a year of use I can tell that Wezterm does fall short in some areas compared to Tmux.</p>
+<h5 id="not-as-popular">Not as popular</h5>
+<p>Wezterm is a newer terminal with a smaller group of users.
+As such there is less information about Wezterm compared to Tmux, which can make it harder to troubleshoot specific issues.<br>
+It also means that some of the plugins from Tmux, like <a href="https://github.com/tmux-plugins/tmux-resurrect">tmux-resurrect</a> or the <a href="https://github.com/joshmedeski/t-smart-tmux-session-manager">t plugin</a> I mentioned above, was not available when I switched.
 This made me develop replacement plugins, like: <a href="https://github.com/MLFlexer/resurrect.wezterm">resurrect</a> and <a href="https://github.com/MLFlexer/smart_workspace_switcher.wezterm">smart_workspace_switcher</a>, however now I don&rsquo;t find that I am missing any plugins.<br>
 And in the last few months a lot of other plugins have been developed, see the <a href="https://github.com/michaelbrusegard/awesome-wezterm">awesome-wezterm list</a>.</p>
-<h4 id="missing-floating-panes">Missing floating panes</h4>
+<h5 id="missing-floating-panes">Missing floating panes</h5>
 <p>One feature I&rsquo;m missing from Tmux is the ability to have floating panes. This is not yet a part of Wezterm, but in recent months <a href="https://github.com/wez/wezterm/pull/5576">big progress</a> has been made to implement them (might even be implemented when you read this).<br>
 Instead of using floating panes for opening <a href="https://github.com/jesseduffield/lazygit">Lazygit</a> or similar, I use tabs as a replacement.
-While it is almost as good as floating panes, tabs can&rsquo;t quite replace the seamless experience of quickly toggleing a floating pane.
+While it is almost as good as floating panes, tabs can&rsquo;t quite replace the seamless experience of quickly toggling a floating pane.
 As such I sometimes end up having random unused tabs open cluttering my tab bar.</p>
-<h4 id="one-multiplexer-window-per-gui-window">One multiplexer window per GUI window</h4>
-<p>Wezterm restricts multiplexer windows to only one GUI window. This means that you unfortunetly cannot have 2 instances of the same multiplexer window attached.<br>
-In Tmux you can have 2 sessions opened at the same time, by attaching one session in one terminal window, and another session in another terminal window.<br>
-This is unfortunetly not possible in Wezterm, and can sometimes be annoying if you want to change something in one workspace, based on something from another workspace.</p>
+<h5 id="one-multiplexer-window-per-gui-window">One multiplexer window per GUI window</h5>
+<p>Wezterm restricts multiplexer windows to only one GUI window. This means that you cannot have 2 instances of the same multiplexer window attached.
+In Tmux you can have 2 sessions opened at the same time, by attaching one session in one terminal window, and another session in another terminal window.
+This is unfortunately not possible in Wezterm, and can sometimes be annoying if you want to change something in one workspace, based on something from another workspace.</p>
 <h2 id="some-general-differences">Some general differences</h2>
-<h4 id="workspaces-vs-sessions">Workspaces vs. Sessions</h4>
+<p>There are differences in how Wezterm handles workspaces/sessions Tmux.
+This is not good nor bad, but you should be aware of these differences, as they can have an impact on your workflow.</p>
+<h5 id="workspaces-vs-sessions">Workspaces vs. Sessions</h5>
 <p>In Wezterm the equivalent to Tmux sessions are workspaces. Workspaces work a lot like sessions, in that they contain the state of the multiplexer for that session.
-You can switch workspaces just like you can switch sessions, but in Wezterm workspaces also contain windows, aswell as tabs and panes.<br>
+You can switch workspaces just like you can switch sessions, but in Wezterm workspaces also contain windows, as well as tabs and panes.<br>
 The image below has an overview of the two, note that Wezterm tabs are equivalent to Tmux windows:</p>
 <p><img src="/wezterm_replacing_tmux/wez_tmux_multiplexer.png" alt="Wezterm and Tmux Multiplexer overview"></p>
-<h4 id="gui-windows-are-a-part-of-workspaces">GUI windows are a part of Workspaces</h4>
+<h5 id="gui-windows-are-a-part-of-workspaces">GUI windows are a part of Workspaces</h5>
 <p>In Wezterm the GUI windows are a part of the workspace. That means that when you change workspaces, your GUI will also change. If you have 2 windows open in one workspace, and 1 in the other. Then changing workspaces will remove/add the 2nd window, like in the gif:</p>
 <p><img src="/wezterm_replacing_tmux/window_workspace_example.gif" alt="Example of windows being attached to workspaces"></p>
 <h2 id="should-you-quit-tmux">Should you quit Tmux?</h2>
-<p>I am very happy with my desicion to switch to Wezterm. Although there were minor downsides to the switch, I found the features exclusive to Wezterm and the ability to easily update my configuration via. great documentation and Lua a huge win.<br>
-So I know that I won&rsquo;t be going back in the current state, and probably will be even less inclined to do so with the addition of new plugins and features into Wezterm.</p>
-<p>But should you make the switch? Honestly both Wezterm and Tmux have really great multiplexing capabilities, and share most features.
-So I would only advice you to change if you want to spice up your multiplexing life and try new experiences.
-But if you are on the fence, then you can always use both, by running Tmux inside Wezterm.<br>
-Oh, and did I mention it is written in <strong>RUST BTW?!!?1!?</strong> 🦀</p>
+<p>After more than a year I can confidently say that I won&rsquo;t be returning to Tmux.
+The ability to have multiplexing capabilities on servers without installing Tmux is a game-changer,
+and the addition of domains into my workflow has been a significant upgrade.
+I also love how easy it has become to configure both my terminal and multiplexer in Lua, thanks to Wezterms well documented APIs.
+And with a growing community developing features and plugins, I am sure it is only going to get better.</p>
+<p>But should <em>you</em> make the switch?
+Honestly both Wezterm and Tmux have really great multiplexing capabilities, and share most features.
+If you share some of my annoyances of forgetting to attach or want to experience features like domains, then I can highly recommend giving Wezterm a shot.
+In this blog post have only touched upon Wezterms multiplexing features, but it is first and foremost an excellent terminal emulator.
+It is well worth trying, just to experience what a modern terminal emulator is like.
+And if you are still on the fence, then you can always run Tmux inside Wezterm, to get the best of both worlds.</p>
+<p>Oh, and did I mention it is written in <strong>RUST BTW?!!?1!?</strong> 🦀</p>
+<p><img src="/wezterm_replacing_tmux/friendship_ended_meme.jpg" alt="Friendship ended meme"></p>
 <h2 id="resources-for-wezterm">Resources for Wezterm:</h2>
 <ul>
 <li><a href="https://wezfurlong.org/wezterm/">Wezterm website</a></li>
 <li><a href="https://github.com/michaelbrusegard/awesome-wezterm">Awesome-Wezterm list</a></li>
 <li><a href="https://www.reddit.com/r/wezterm/">Reddit</a></li>
+<li><a href="https://github.com/wez/wezterm/discussions">Github discussions</a></li>
 <li><a href="https://app.element.io/#/room/#wezterm:matrix.org">Matrix</a></li>
 <li><a href="https://github.com/MLFlexer/.dotfiles/tree/main/home-manager/config/wezterm">My Wezterm configuration</a></li>
 </ul>
